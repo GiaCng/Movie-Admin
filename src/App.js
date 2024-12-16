@@ -5,6 +5,8 @@ import AddCategoryForm from './AddCategoryForm';
 import MovieForm from './MovieForm';
 import MovieAdmin from './MovieAdmin';  // Import the MovieAdmin component
 import MovieUser from './MovieUser';
+import MovieCategory from './MovieCategory';
+import MovieCountry from './MovieCountry';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/add-movie" element={<MovieForm />} />
         <Route path="/movie-admin" element={<MovieAdmin />} />
         <Route path="/users" element={<MovieUser />} />
+        <Route path="/categories" element={<MovieCategory />} />
+        <Route path="/country" element={<MovieCountry />} />
+
       </Routes>
     </Router>
   );

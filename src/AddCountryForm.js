@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddCountryForm() {
     const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ function AddCountryForm() {
     });
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +19,7 @@ function AddCountryForm() {
         e.preventDefault();
         setError('');
         setSuccessMessage('');
+        
 
         if (!formData.name || !formData.slug) {
             setError('Please fill in all fields: Name and Slug.');
@@ -33,6 +36,9 @@ function AddCountryForm() {
             if (response.ok) {
                 setSuccessMessage('Country added successfully!');
                 setFormData({ name: '', slug: '' });
+                setTimeout(() => {
+                    navigate('/country');
+                }, 1000);
             } else {
                 const errorData = await response.json();
                 setError(`Error: ${errorData.message || 'Failed to add country.'}`);
@@ -80,6 +86,7 @@ function AddCountryForm() {
                 <button
                     type="submit"
                     className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+                    
                 >
                     Add Country
                 </button>

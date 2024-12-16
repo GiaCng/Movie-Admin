@@ -135,24 +135,38 @@ function MovieAdmin() {
         >
             Add Movie
         </Link>
-        <Link 
+        {/* <Link 
             to="/add-country" 
             className="px-4 py-2 bg-blue-500 mr-6  text-white rounded hover:bg-blue-600 text-right"
         >
             Add Country
-        </Link>
+        </Link> */}
         <Link 
+            to="/country" 
+            className="px-4 py-2 bg-blue-500 mr-6  text-white rounded hover:bg-blue-600 text-right"
+        >
+            Country
+        </Link>
+        {/* <Link 
             to="/add-category" 
             className="px-4 py-2 bg-blue-500 mr-6  text-white rounded hover:bg-blue-600 text-right"
         >
             Add Category
-        </Link>
+        </Link> */}
         <Link 
             to="/users" 
             className="px-4 py-2 bg-blue-500 mr-6  text-white rounded hover:bg-blue-600 text-right"
         >
             User Info
         </Link>
+
+        <Link 
+            to="/categories" 
+            className="px-4 py-2 bg-blue-500 mr-6  text-white rounded hover:bg-blue-600 text-right"
+        >
+            Category
+        </Link>
+
     </div>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-200">
@@ -226,8 +240,10 @@ function MovieAdmin() {
             <ReactModal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
-                className="fixed inset-0 flex items-center justify-center p-4"
-                overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+                className="relative bg-white max-h-full overflow-y-auto rounded shadow-lg p-6 w-full max-w-3xl"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                shouldCloseOnOverlayClick={true}
+                shouldCloseOnEsc={true}
             >
                 {movieDetails && (
                     <div className="relative bg-white max-h-full overflow-y-auto rounded shadow-lg p-6 w-full max-w-3xl">

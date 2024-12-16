@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function AddCategoryForm() {
     const [formData, setFormData] = useState({
@@ -7,6 +9,8 @@ function AddCategoryForm() {
     });
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate();
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,6 +37,9 @@ function AddCategoryForm() {
             if (response.ok) {
                 setSuccessMessage('Category added successfully!');
                 setFormData({ name: '', slug: '' });
+                setTimeout(() => {
+                    navigate('/country');
+                }, 1000);
             } else {
                 const errorData = await response.json();
                 setError(`Error: ${errorData.message || 'Failed to add category.'}`);
